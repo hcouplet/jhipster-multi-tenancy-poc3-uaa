@@ -2,8 +2,8 @@ package eu.creativeone.web.rest;
 
 import eu.creativeone.config.Constants;
 import com.codahale.metrics.annotation.Timed;
-import eu.creativeone.domain.User;
-import eu.creativeone.repository.UserRepository;
+import eu.creativeone.tenancy.domain.User;
+import eu.creativeone.tenancy.repository.UserRepository;
 import eu.creativeone.security.AuthoritiesConstants;
 import eu.creativeone.service.MailService;
 import eu.creativeone.service.UserService;
@@ -159,6 +159,19 @@ public class UserResource {
     public List<String> getAuthorities() {
         return userService.getAuthorities();
     }
+
+
+    /**
+     * GET  /tenants : get all tenants.
+     *
+     * @return a string list of the tenants
+     */
+    @GetMapping("/tenants")
+    @Timed
+    public List<String> getAllTenants() {
+        return userService.getTenants();
+    }
+
 
     /**
      * GET  /users/:login : get the "login" user.

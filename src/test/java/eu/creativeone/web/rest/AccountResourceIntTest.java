@@ -2,10 +2,10 @@ package eu.creativeone.web.rest;
 
 import eu.creativeone.config.Constants;
 import eu.creativeone.UaaApp;
-import eu.creativeone.domain.Authority;
-import eu.creativeone.domain.User;
+import eu.creativeone.tenancy.domain.Authority;
+import eu.creativeone.tenancy.domain.User;
 import eu.creativeone.repository.AuthorityRepository;
-import eu.creativeone.repository.UserRepository;
+import eu.creativeone.tenancy.repository.UserRepository;
 import eu.creativeone.security.AuthoritiesConstants;
 import eu.creativeone.service.MailService;
 import eu.creativeone.service.dto.UserDTO;
@@ -31,7 +31,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
 import java.time.Instant;
-import java.time.LocalDate;
 
 import java.util.*;
 

@@ -2,7 +2,7 @@ package eu.creativeone.service;
 import eu.creativeone.config.Constants;
 
 import eu.creativeone.UaaApp;
-import eu.creativeone.domain.User;
+import eu.creativeone.tenancy.domain.User;
 import io.github.jhipster.config.JHipsterProperties;
 import org.junit.Before;
 import org.junit.Test;

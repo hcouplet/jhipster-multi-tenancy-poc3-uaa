@@ -1,7 +1,8 @@
 package eu.creativeone.security;
 
-import eu.creativeone.domain.User;
-import eu.creativeone.repository.UserRepository;
+import eu.creativeone.tenancy.domain.User;
+import eu.creativeone.tenancy.repository.UserRepository;
+import eu.creativeone.tenancy.user.TenantUser;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.GrantedAuthority;
@@ -42,9 +43,13 @@ public class DomainUserDetailsService implements UserDetailsService {
             List<GrantedAuthority> grantedAuthorities = user.getAuthorities().stream()
                     .map(authority -> new SimpleGrantedAuthority(authority.getName()))
                 .collect(Collectors.toList());
-            return new org.springframework.security.core.userdetails.User(lowercaseLogin,
-                user.getPassword(),
-                grantedAuthorities);
+//            return new org.springframework.security.core.userdetails.User(lowercaseLogin,
+//                user.getPassword(),
+//                grantedAuthorities);
+
+            TenantUser tenantUser = new TenantUser(lowercaseLogin, user.getPassword(), grantedAuthorities);
+            tenantUser.setTenantId(user.getTenantId());
+            return tenantUser;
         }).orElseThrow(() -> new UsernameNotFoundException("User " + lowercaseLogin + " was not found in the " +
         "database"));
     }

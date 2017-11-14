@@ -2,8 +2,8 @@ package eu.creativeone.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 
-import eu.creativeone.domain.User;
-import eu.creativeone.repository.UserRepository;
+import eu.creativeone.tenancy.domain.User;
+import eu.creativeone.tenancy.repository.UserRepository;
 import eu.creativeone.security.SecurityUtils;
 import eu.creativeone.service.MailService;
 import eu.creativeone.service.UserService;

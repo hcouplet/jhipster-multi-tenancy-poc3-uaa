@@ -1,10 +1,10 @@
 package eu.creativeone.service;
 
-import eu.creativeone.domain.Authority;
-import eu.creativeone.domain.User;
+import eu.creativeone.tenancy.domain.Authority;
+import eu.creativeone.tenancy.domain.User;
 import eu.creativeone.repository.AuthorityRepository;
 import eu.creativeone.config.Constants;
-import eu.creativeone.repository.UserRepository;
+import eu.creativeone.tenancy.repository.UserRepository;
 import eu.creativeone.security.AuthoritiesConstants;
 import eu.creativeone.security.SecurityUtils;
 import eu.creativeone.service.util.RandomUtil;
@@ -13,6 +13,7 @@ import eu.creativeone.web.rest.vm.ManagedUserVM;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.CacheManager;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -250,5 +251,12 @@ public class UserService {
      */
     public List<String> getAuthorities() {
         return authorityRepository.findAll().stream().map(Authority::getName).collect(Collectors.toList());
+    }
+
+    /**
+     * @return a list of all the authorities
+     */
+    public List<String> getTenants() {
+        return userRepository.findAllDistinctTenant();
     }
 }

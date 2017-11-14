@@ -1,4 +1,4 @@
-package eu.creativeone.domain;
+package eu.creativeone.tenancy.domain;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;

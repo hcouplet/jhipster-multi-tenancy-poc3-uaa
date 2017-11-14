@@ -2,8 +2,8 @@ package eu.creativeone.service;
 
 import eu.creativeone.UaaApp;
 import eu.creativeone.config.Constants;
-import eu.creativeone.domain.User;
-import eu.creativeone.repository.UserRepository;
+import eu.creativeone.tenancy.domain.User;
+import eu.creativeone.tenancy.repository.UserRepository;
 import eu.creativeone.service.dto.UserDTO;
 import eu.creativeone.service.util.RandomUtil;
 
